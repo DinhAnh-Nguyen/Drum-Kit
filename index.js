@@ -1,14 +1,27 @@
+// Detecing button pressed
+
 for (var i = 0; i < document.querySelectorAll(".drum").length; i ++) {
 
-    document.querySelectorAll("button")[i].addEventListener("click", handleClick)
+    document.querySelectorAll("button")[i].addEventListener("click", function () {
 
+        var buttonInnerHTML = this.innerHTML
+
+        makeSound(buttonInnerHTML)
+
+    })
 }
 
-function handleClick () {
+// Detecting keyboard pressed
 
-    var buttonInnerHTML = this.innerHTML
+document.addEventListener("keypress", function (event) {
 
-    switch (buttonInnerHTML) {
+    makeSound(event.key)
+
+})
+
+function makeSound (key) {
+
+    switch (key) {
         case "w":
             var audio = new Audio("sounds/tom-1.mp3")
             audio.play()
